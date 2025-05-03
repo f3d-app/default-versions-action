@@ -2,4 +2,4 @@
 
 A github action to parse and output default version of F3D dependencies
 
-Needs `jq`.
+Installs `jq` using `sudo` and `apt`.

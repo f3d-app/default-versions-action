@@ -56,11 +56,13 @@ runs:
 
     - name: Check required inputs
       shell: bash
-      run: |
-        [[ "${{ inputs.file }}" ]] || { echo "file input is empty" ; exit 1; }
+      run: [[ "${{ inputs.file }}" ]] || { echo "file input is empty" ; exit 1; }
+
+    - name: Install jq
+      shell: bash
+      run: sudo apt install -y jq
 
     - name: Read JSON file
       id: parse_file
       shell: bash
-      run: |
-        echo "json=$(jq -c . < ${{ inputs.file }})" >> $GITHUB_OUTPUT
+      run: echo "json=$(jq -c . < ${{ inputs.file }})" >> $GITHUB_OUTPUT
