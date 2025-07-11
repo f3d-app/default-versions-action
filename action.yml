@@ -15,10 +15,22 @@ outputs:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.assimp }}"
   assimp_min_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.assimp }}"
+  blosc_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).versions.blosc }}"
+  blosc_min_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.blosc }}"
   draco_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.draco }}"
   draco_min_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.draco }}"
+  imath_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).versions.imath }}"
+  imath_min_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.imath }}"
+  java_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).versions.java }}"
+  java_min_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.java }}"
   occt_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.occt }}"
   occt_min_version:
@@ -39,14 +51,18 @@ outputs:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.python }}"
   python_min_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.python }}"
+  tbb_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).versions.tbb }}"
+  tbb_min_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.tbb }}"
   usd_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.usd }}"
   usd_min_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.usd }}"
-  java_version:
-    value: "${{ fromJson(steps.parse_file.outputs.json).versions.java }}"
-  java_min_version:
-    value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.java }}"
+  zlib_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).versions.zlib }}"
+  zlib_min_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.zlib }}"
   vtk_commit_sha:
     value: "${{ fromJson(steps.parse_file.outputs.json).vtk_commit_sha }}"
 
@@ -64,3 +80,11 @@ runs:
       shell: bash
       run: |
         echo "json=$(jq -c . < ${{ inputs.file }})" >> $GITHUB_OUTPUT
+
+    - name: Echo JSON file
+      id: parse_file
+      shell: bash
+      run: |
+        echo "json=$(jq -c . < ${{ inputs.file }})"
+        echo "${{ fromJson(steps.parse_file.outputs.json).versions.alembic }}"
+        echo "${{ fromJson(steps.parse_file.outputs.json).versions.tbb }}"
