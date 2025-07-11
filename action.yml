@@ -80,11 +80,3 @@ runs:
       shell: bash
       run: |
         echo "json=$(jq -c . < ${{ inputs.file }})" >> $GITHUB_OUTPUT
-
-    - name: Echo JSON file
-      id: parse_file
-      shell: bash
-      run: |
-        echo "json=$(jq -c . < ${{ inputs.file }})"
-        echo "${{ fromJson(steps.parse_file.outputs.json).versions.alembic }}"
-        echo "${{ fromJson(steps.parse_file.outputs.json).versions.tbb }}"
