@@ -43,6 +43,10 @@ outputs:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.openvdb }}"
   openvdb_min_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.openvdb }}"
+  ospray_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).versions.ospray }}"
+  ospray_min_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.ospray }}"
   pybind11_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.pybind11 }}"
   pybind11_min_version:
