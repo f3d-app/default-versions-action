@@ -63,6 +63,10 @@ outputs:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.usd }}"
   usd_min_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.usd }}"
+  webp_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).versions.webp }}"
+  webp_min_version:
+    value: "${{ fromJson(steps.parse_file.outputs.json).min_versions.webp }}"
   zlib_version:
     value: "${{ fromJson(steps.parse_file.outputs.json).versions.zlib }}"
   zlib_min_version:
